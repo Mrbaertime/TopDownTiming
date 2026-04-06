@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7874045244595445764, guid: 96f0ae3b58e87c848a6bf1aac74c221c, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8412138395882914526, guid: 96f0ae3b58e87c848a6bf1aac74c221c, type: 3}
       propertyPath: maxHP
