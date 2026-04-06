@@ -1,9 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
     public float lifeTime = 2f;
+    public int damage = 20; // ✅ เพิ่มดาเมจ
 
     void Start()
     {
@@ -19,6 +20,13 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+            Health hp = collision.GetComponent<Health>();
+
+            if (hp != null)
+            {
+                hp.TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
     }
