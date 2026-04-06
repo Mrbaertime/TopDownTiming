@@ -1,0 +1,42 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerMovement : MonoBehaviour
+{
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed = 6f;
+
+    private Rigidbody2D rb;
+    private Vector2 moveInput;
+
+    private InputSystem_Actions inputActions;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        inputActions = new InputSystem_Actions();
+    }
+
+    void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    void OnDisable()
+    {
+        inputActions.Disable();
+    }
+
+    void Update()
+    {
+        // อ่านค่า input
+        moveInput = inputActions.Player.Move.ReadValue<Vector2>();
+    }
+
+    void FixedUpdate()
+    {
+        // เคลื่อนที่
+        rb.linearVelocity = moveInput * moveSpeed;
+    }
+}
