@@ -18,6 +18,13 @@ public class PlayerMovement : MonoBehaviour
         inputActions = new InputSystem_Actions();
     }
 
+    ////เสริมมาก่อน เอามาใช้ก่อน
+    void Start()
+    {
+        GetComponent<Health>().OnDeath += OnPlayerDeath;
+    }
+
+
     void OnEnable()
     {
         inputActions.Enable();
@@ -38,5 +45,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // เคลื่อนที่
         rb.linearVelocity = moveInput * moveSpeed;
+    }
+
+    //เสริมมาก่อน เอามาใช้ก่อน
+    void OnPlayerDeath()
+    {
+        GameManager.Instance.GameOver();
     }
 }

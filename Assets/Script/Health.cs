@@ -1,21 +1,23 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHP = 100;
-    private int currentHP;
+    public int maxHealth = 100;
+    private int currentHealth;
+
+    public Action OnDeath; // 👈 สำคัญมาก
 
     void Start()
     {
-        currentHP = maxHP;
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        currentHP -= damage;
-        Debug.Log("Enemy Hp :" + currentHP);
+        currentHealth -= damage;
 
-        if (currentHP <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -23,6 +25,6 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        OnDeath?.Invoke(); // 👈 เรียก event
     }
 }

@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
 
         originalColor = sr.color;
         currentHealth = maxHealth;
+
+        GetComponent<Health>().OnDeath += OnEnemyDeath;
     }
 
     void Update()
@@ -104,4 +106,10 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
+
+    void OnEnemyDeath()
+    {
+        Destroy(gameObject);
+    }
+
 }
