@@ -108,6 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 3
+  maxHealth: 3
+  knockbackForce: 2
+  hitFlashTime: 0.1
 --- !u!61 &7874045244595445764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -180,7 +183,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8412138395882914526
 MonoBehaviour:
   m_ObjectHideFlags: 0
