@@ -29,5 +29,12 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        //if (collision.CompareTag("Player"))
+        //{
+        //    Debug.Log("hit Player");
+        //    return;
+        //}
+
     }
 }
