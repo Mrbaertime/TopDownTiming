@@ -108,9 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 3
-  damage: 10
-  knockbackForce: 2
-  hitFlashTime: 0.1
 --- !u!61 &7874045244595445764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -197,3 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 100
+  knockbackForce: 2
+  knockbackDuration: 0.15
+  hitFlashTime: 0.1
