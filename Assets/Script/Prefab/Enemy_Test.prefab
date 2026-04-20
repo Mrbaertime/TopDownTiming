@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 3
-  maxHealth: 3
+  damage: 10
   knockbackForce: 2
   hitFlashTime: 0.1
 --- !u!61 &7874045244595445764
@@ -196,4 +196,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84fa6e9a773ce96479d11b4352be546e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHP: 100
+  maxHealth: 100
