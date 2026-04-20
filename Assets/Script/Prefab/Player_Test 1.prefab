@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8522267902901596347}
   - component: {fileID: 5644983559506062495}
   m_Layer: 0
-  m_Name: Player_Test
+  m_Name: Player_Test 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8113168183765206979, guid: 5d6bb3ea033b6874db9c2aef37b7d2af, type: 3}
+  m_Sprite: {fileID: 8686988428010771260, guid: 18a1caa1fedfe414694664652672514d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -250,17 +250,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.02312404}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.75, y: 2}
+    oldSize: {x: 1.875, y: 1.1875}
     newSize: {x: 0.3, y: 0.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6437602, y: 1.962154}
+  m_Size: {x: 1.875, y: 1.1875}
   m_EdgeRadius: 0
 --- !u!114 &4479168485571386060
 MonoBehaviour:
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84fa6e9a773ce96479d11b4352be546e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
+  maxHP: 100
 --- !u!114 &5644983559506062495
 MonoBehaviour:
   m_ObjectHideFlags: 0
