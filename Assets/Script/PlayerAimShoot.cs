@@ -17,6 +17,9 @@ public class PlayerAimShoot : MonoBehaviour
     private Vector2 aimInput;
     private float fireTimer;
 
+    public bool isDoubleShot = false;
+    public float spreadAngle = 10f; // มุมกระจาย
+
     void Start()
     {
         cam = Camera.main;
@@ -76,15 +79,29 @@ public class PlayerAimShoot : MonoBehaviour
 
     void Shoot()
     {
-        if (bulletPrefab == null || firePoint == null)
-            return;
+        //if (bulletPrefab == null || firePoint == null)
+        //    return;
 
         fireTimer += Time.deltaTime;
 
         if (fireTimer >= 1f / fireRate)
         {
             fireTimer = 0f;
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            //เพิ่ม
+            if (isDoubleShot)
+            {
+                // 👉 ยิง 2 นัดแยกมุม
+                Quaternion left = firePoint.rotation * Quaternion.Euler(0, 0, -spreadAngle);
+                Quaternion right = firePoint.rotation * Quaternion.Euler(0, 0, spreadAngle);
+
+                Instantiate(bulletPrefab, firePoint.position, left);
+                Instantiate(bulletPrefab, firePoint.position, right);
+            }
+            else
+            {
+                // ยิงปกติ
+                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            }
         }
     }
 }

@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4479168485571386060}
   - component: {fileID: 8522267902901596347}
   - component: {fileID: 5644983559506062495}
+  - component: {fileID: 4525482324293114405}
   m_Layer: 0
   m_Name: Player_Test
   m_TagString: Player
@@ -279,6 +280,7 @@ MonoBehaviour:
   playerSprite: {fileID: 5315650283079312154}
   bulletPrefab: {fileID: 5843285146062306424, guid: f0b4275958d82af43a87340131836a3e, type: 3}
   fireRate: 1
+  extraBullets: 0
 --- !u!114 &8522267902901596347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +310,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 6
+--- !u!95 &4525482324293114405
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881685985671712966}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 138ba69192626794eae5f19c1939483c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5490295124651519750
 GameObject:
   m_ObjectHideFlags: 0

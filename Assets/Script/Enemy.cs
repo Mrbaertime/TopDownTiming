@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private Health healthComponent;
 
+    [Header("Drops")]
+    public GameObject expPrefab;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -69,6 +72,11 @@ public class Enemy : MonoBehaviour
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);
+
+        if (expPrefab != null) // เช็คกันเหนียวไว้ก่อนว่าลาก Prefab มาใส่หรือยัง จะได้ไม่ Error
+        {
+            Instantiate(expPrefab, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 }
