@@ -18,6 +18,8 @@ public class PlayerAimShoot : MonoBehaviour
     private float fireTimer;
 
     public bool isDoubleShot = false;
+    public bool isTripleShot = false;
+
     public float spreadAngle = 10f;
 
     public float bulletScale = 1f;
@@ -83,7 +85,17 @@ public class PlayerAimShoot : MonoBehaviour
         {
             fireTimer = 0f;
 
-            if (isDoubleShot)
+            if (isTripleShot)
+            {
+                Quaternion left = firePoint.rotation * Quaternion.Euler(0, 0, -spreadAngle);
+                Quaternion mid = firePoint.rotation;
+                Quaternion right = firePoint.rotation * Quaternion.Euler(0, 0, spreadAngle);
+
+                SpawnBullet(left);
+                SpawnBullet(mid);
+                SpawnBullet(right);
+            }
+            else if (isDoubleShot)
             {
                 Quaternion left = firePoint.rotation * Quaternion.Euler(0, 0, -spreadAngle);
                 Quaternion right = firePoint.rotation * Quaternion.Euler(0, 0, spreadAngle);

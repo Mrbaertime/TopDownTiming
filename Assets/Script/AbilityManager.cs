@@ -3,15 +3,20 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
+    [Header("Data")]
     public List<AbilityData> allAbilities;
+
+    [Header("Reference")]
     public GameObject panel;
     public GameObject player;
+    public AbilityButtonUI[] buttons;
 
     private List<AbilityData> choices = new List<AbilityData>();
     private List<AbilityData> ownedAbilities = new List<AbilityData>();
 
-    public AbilityButtonUI[] buttons;
-
+    // =========================
+    // 🎯 SHOW ABILITY
+    // =========================
     public void ShowAbilities()
     {
         choices.Clear();
@@ -20,11 +25,38 @@ public class AbilityManager : MonoBehaviour
 
         foreach (var ab in allAbilities)
         {
+            // 🔥 1. ถ้ามี "ตัว upgrade" นี้แล้ว → ห้ามเอาตัว base มา
+            bool alreadyUpgraded = false;
+
+            foreach (var owned in ownedAbilities)
+            {
+                if (owned == ab.upgradeTo)
+                {
+                    alreadyUpgraded = true;
+                    break;
+                }
+            }
+
+            if (alreadyUpgraded)
+                continue;
+
+            // 🆕 2. ยังไม่มี → ใช้ได้
             if (!ownedAbilities.Contains(ab))
+            {
                 available.Add(ab);
+            }
+            // 🔁 3. มีแล้ว → ถ้ามี upgrade → เอา upgrade มา
+            else if (ab.upgradeTo != null)
+            {
+                // ❗ กันไม่ให้ Triple โผล่ซ้ำ
+                if (!ownedAbilities.Contains(ab.upgradeTo))
+                {
+                    available.Add(ab.upgradeTo);
+                }
+            }
         }
 
-        // 🔥 ถ้าไม่มี ability ให้เลือก
+        // ❌ ไม่มีอะไรให้เลือก
         if (available.Count == 0)
         {
             panel.SetActive(false);
@@ -43,6 +75,7 @@ public class AbilityManager : MonoBehaviour
             available.RemoveAt(rand);
         }
 
+        // 🎮 ตั้งค่าปุ่ม UI
         for (int i = 0; i < buttons.Length; i++)
         {
             if (i < choices.Count)
@@ -56,32 +89,94 @@ public class AbilityManager : MonoBehaviour
             }
         }
     }
+
+    // =========================
+    // 🎯 CHECK AVAILABLE
+    // =========================
     public bool HasAvailableAbility()
     {
         foreach (var ab in allAbilities)
         {
-            if (!ownedAbilities.Contains(ab))
+            if (!ownedAbilities.Contains(ab) || ab.upgradeTo != null)
                 return true;
         }
         return false;
     }
 
+    // =========================
+    // 🎯 CHOOSE ABILITY
+    // =========================
     public void ChooseAbility(int index)
     {
+        // 🔥 กัน index หลุด
+        if (index < 0 || index >= choices.Count)
+            return;
+
         AbilityData selected = choices[index];
 
-        ownedAbilities.Add(selected);
+        AbilityData baseAbility = null;
 
-        GameObject obj = Instantiate(selected.abilityPrefab, player.transform);
-        obj.GetComponent<PlayerAbility>().Activate(player);
 
+        // 🔍 หา ability ที่อัปเกรดมาเป็นตัวนี้
+        foreach (var ab in ownedAbilities)
+        {
+            if (ab.upgradeTo == selected)
+            {
+                baseAbility = ab;
+                break;
+            }
+        }
+
+        if (baseAbility != null)
+        {
+            // 🔁 อัปเกรด (Double → Triple)
+
+            // ❗ ไม่ต้อง Remove ของเก่า
+            if (!ownedAbilities.Contains(selected))
+            {
+                ownedAbilities.Add(selected);
+            }
+
+            ActivateAbility(selected);
+        }
+        else
+        {
+            // 🆕 ได้ ability ใหม่
+
+            // ❗ กันซ้ำ
+            if (!ownedAbilities.Contains(selected))
+            {
+                ownedAbilities.Add(selected);
+                ActivateAbility(selected);
+            }
+        }
+
+        // 🔒 ปิด UI + เล่นต่อ
         panel.SetActive(false);
         Time.timeScale = 1f;
     }
 
+    // =========================
+    // 🎯 ACTIVATE
+    // =========================
+    void ActivateAbility(AbilityData ability)
+    {
+        GameObject obj = Instantiate(ability.abilityPrefab, player.transform);
+
+        PlayerAbility ab = obj.GetComponent<PlayerAbility>();
+
+        if (ab != null)
+        {
+            ab.Activate(player);
+        }
+    }
+
+    // =========================
+    // ⏭ SKIP
+    // =========================
     public void SkipUpgrade()
     {
         panel.SetActive(false);
-        Time.timeScale = 1f; // ▶️ เล่นต่อ
+        Time.timeScale = 1f;
     }
 }

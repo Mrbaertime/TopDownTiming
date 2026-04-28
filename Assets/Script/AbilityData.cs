@@ -8,4 +8,7 @@ public class AbilityData : ScriptableObject
     public Sprite icon;
 
     public GameObject abilityPrefab;
+
+    public AbilityData upgradeTo;
+
 }
