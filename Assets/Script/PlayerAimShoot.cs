@@ -18,7 +18,10 @@ public class PlayerAimShoot : MonoBehaviour
     private float fireTimer;
 
     public bool isDoubleShot = false;
-    public float spreadAngle = 10f; // มุมกระจาย
+    public float spreadAngle = 10f;
+
+    // 🔥 เพิ่มตรงนี้
+    public float bulletScale = 1f;
 
     void Start()
     {
@@ -34,7 +37,6 @@ public class PlayerAimShoot : MonoBehaviour
 
     void GetAimInput()
     {
-        // 🎮 อ่านจาก Gamepad (รวม On-Screen Stick)
         if (Gamepad.current != null)
         {
             Vector2 stick = Gamepad.current.rightStick.ReadValue();
@@ -46,7 +48,6 @@ public class PlayerAimShoot : MonoBehaviour
             }
         }
 
-        // 🖱️ fallback → Mouse
         if (Mouse.current != null)
         {
             Vector2 mousePos = Mouse.current.position.ReadValue();
@@ -67,10 +68,8 @@ public class PlayerAimShoot : MonoBehaviour
         float angle = Mathf.Atan2(aimInput.y, aimInput.x) * Mathf.Rad2Deg;
         gunPivot.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Flip ตัวละคร
         playerSprite.flipX = aimInput.x > 0;
 
-        // กันปืนกลับหัว
         if (aimInput.x < 0)
             gunPivot.localScale = new Vector3(1, -1, 1);
         else
@@ -79,29 +78,31 @@ public class PlayerAimShoot : MonoBehaviour
 
     void Shoot()
     {
-        //if (bulletPrefab == null || firePoint == null)
-        //    return;
-
         fireTimer += Time.deltaTime;
 
         if (fireTimer >= 1f / fireRate)
         {
             fireTimer = 0f;
-            //เพิ่ม
+
             if (isDoubleShot)
             {
-                // 👉 ยิง 2 นัดแยกมุม
                 Quaternion left = firePoint.rotation * Quaternion.Euler(0, 0, -spreadAngle);
                 Quaternion right = firePoint.rotation * Quaternion.Euler(0, 0, spreadAngle);
 
-                Instantiate(bulletPrefab, firePoint.position, left);
-                Instantiate(bulletPrefab, firePoint.position, right);
+                SpawnBullet(left);
+                SpawnBullet(right);
             }
             else
             {
-                // ยิงปกติ
-                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                SpawnBullet(firePoint.rotation);
             }
         }
+    }
+
+    // 🔥 ฟังก์ชันรวม ยิง + scale
+    void SpawnBullet(Quaternion rot)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rot);
+        bullet.transform.localScale *= bulletScale;
     }
 }

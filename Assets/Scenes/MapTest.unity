@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AbilityManager
   allAbilities:
   - {fileID: 11400000, guid: 17f3086eef4d1694aaf7ef2d70bc885f, type: 2}
-  - {fileID: 11400000, guid: 17f3086eef4d1694aaf7ef2d70bc885f, type: 2}
+  - {fileID: 11400000, guid: 7df4c7ff53bf0fe4abbba32ec6cd1b2e, type: 2}
   panel: {fileID: 446929955}
   player: {fileID: 1360277719}
   buttons:
