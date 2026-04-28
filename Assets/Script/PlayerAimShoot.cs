@@ -20,7 +20,6 @@ public class PlayerAimShoot : MonoBehaviour
     public bool isDoubleShot = false;
     public float spreadAngle = 10f;
 
-    // 🔥 เพิ่มตรงนี้
     public float bulletScale = 1f;
 
     void Start()

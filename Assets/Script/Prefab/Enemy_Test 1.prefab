@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23af6e28f38acf24e9dbbc7a7247a2e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  speed: 3
+  speed: 4
   damage: 10
   expPrefab: {fileID: 7156050458452802635, guid: e2232e8156f98324a8a8a3676ea7ca06, type: 3}
 --- !u!61 &7874045244595445764
