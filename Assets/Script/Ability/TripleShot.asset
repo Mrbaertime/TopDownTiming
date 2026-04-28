@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663b348e51118a34b90e9bb8d8a3d49a, type: 3}
   m_Name: TripleShot
   m_EditorClassIdentifier: Assembly-CSharp::AbilityData
-  abilityName: 
-  description: 
-  icon: {fileID: 0}
-  abilityPrefab: {fileID: 0}
+  abilityName: TripleShot
+  description: Upgrade from DoubleShot
+  icon: {fileID: -5643105228771564274, guid: 87f1328c8c63f3d48b3d7523b0814855, type: 3}
+  abilityPrefab: {fileID: 5709846334380704407, guid: 3520d787ebe834e48b0a59be7ead24c3, type: 3}
   upgradeTo: {fileID: 0}
