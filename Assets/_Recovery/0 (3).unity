@@ -3907,7 +3907,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefabs:
   - {fileID: 8865086485978116878, guid: 96f0ae3b58e87c848a6bf1aac74c221c, type: 3}
-  - {fileID: 8865086485978116878, guid: 7238949e272772741b5b58e103da77d7, type: 3}
   player: {fileID: 1284729418}
   spawnRate: 2
   spawnDistance: 8
