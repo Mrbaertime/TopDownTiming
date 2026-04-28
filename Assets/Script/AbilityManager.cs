@@ -14,7 +14,6 @@ public class AbilityManager : MonoBehaviour
 
     public void ShowAbilities()
     {
-        panel.SetActive(true);
         choices.Clear();
 
         List<AbilityData> available = new List<AbilityData>();
@@ -25,7 +24,16 @@ public class AbilityManager : MonoBehaviour
                 available.Add(ab);
         }
 
-        // 👉 สุ่มแบบ "ไม่เกินจำนวนที่มี"
+        // 🔥 ถ้าไม่มี ability ให้เลือก
+        if (available.Count == 0)
+        {
+            panel.SetActive(false);
+            Time.timeScale = 1f;
+            return;
+        }
+
+        panel.SetActive(true);
+
         int count = Mathf.Min(3, available.Count);
 
         for (int i = 0; i < count; i++)
@@ -35,7 +43,6 @@ public class AbilityManager : MonoBehaviour
             available.RemoveAt(rand);
         }
 
-        // 🔥 สำคัญ: เปิด/ปิดปุ่มให้ตรงจำนวน
         for (int i = 0; i < buttons.Length; i++)
         {
             if (i < choices.Count)
@@ -48,6 +55,15 @@ public class AbilityManager : MonoBehaviour
                 buttons[i].gameObject.SetActive(false);
             }
         }
+    }
+    public bool HasAvailableAbility()
+    {
+        foreach (var ab in allAbilities)
+        {
+            if (!ownedAbilities.Contains(ab))
+                return true;
+        }
+        return false;
     }
 
     public void ChooseAbility(int index)
