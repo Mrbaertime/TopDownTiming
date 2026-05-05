@@ -2211,8 +2211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   gameDuration: 60
-  bossInterval: 180
-  bossPrefab: {fileID: 8865086485978116878, guid: 96f0ae3b58e87c848a6bf1aac74c221c, type: 3}
+  bossInterval: 10
+  bossPrefab: {fileID: 8865086485978116878, guid: 0dd118d4648346340b3638adcae44e12, type: 3}
   player: {fileID: 1284729418}
   gameOverPanel: {fileID: 1893410818}
   winPanel: {fileID: 14670428}
