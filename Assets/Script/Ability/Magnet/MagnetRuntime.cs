@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MagnetRuntime : MonoBehaviour
 {
-    public float radius = 5f;
+    public float radius = 2f;
     public float pullSpeed = 10f;
 
     void Update()
