@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663b348e51118a34b90e9bb8d8a3d49a, type: 3}
   m_Name: Magnet
   m_EditorClassIdentifier: Assembly-CSharp::AbilityData
-  abilityName: 
-  description: 
-  icon: {fileID: 0}
-  abilityPrefab: {fileID: 0}
+  abilityName: Magnet
+  description: Magnet in radius 5
+  icon: {fileID: 4877825377717948546, guid: b0cbd519b37fd014798d230332f8348c, type: 3}
+  abilityPrefab: {fileID: 5368225302994706244, guid: 4aca81a34749e0649a313031924d7c7d, type: 3}
   upgradeTo: {fileID: 0}
