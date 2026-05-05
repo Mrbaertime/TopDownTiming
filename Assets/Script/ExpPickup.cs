@@ -4,9 +4,28 @@ public class ExpPickup : MonoBehaviour
 {
     public float expAmount = 5f;
 
-    //public float magnetSpeed = 5f;
-    //private Transform player;
-    //private bool isMagnetActive = false;
+    private Transform target;
+    private float speed;
+    private bool isMagnet = false;
+
+    void Update()
+    {
+        if (isMagnet && target != null)
+        {
+            transform.position = Vector2.MoveTowards(
+                transform.position,
+                target.position,
+                speed * Time.deltaTime
+            );
+        }
+    }
+
+    public void ActivateMagnet(Transform player, float pullSpeed)
+    {
+        target = player;
+        speed = pullSpeed;
+        isMagnet = true;
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -16,22 +35,4 @@ public class ExpPickup : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    //void Update()
-    //{
-    //    if (isMagnetActive && player != null)
-    //    {
-    //        transform.position = Vector2.MoveTowards(
-    //            transform.position,
-    //            player.position,
-    //            magnetSpeed * Time.deltaTime
-    //        );
-    //    }
-    //}
-
-    //public void ActivateMagnet(Transform target)
-    //{
-    //    player = target;
-    //    isMagnetActive = true;
-    //}
 }
