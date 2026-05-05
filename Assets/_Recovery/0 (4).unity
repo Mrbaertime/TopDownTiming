@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20987256, g: 0.14855818, b: 0.735849, a: 0.392}
+  m_Color: {r: 1, g: 0.050943315, b: 0.050943315, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2897,8 +2897,7 @@ MonoBehaviour:
   allAbilities:
   - {fileID: 11400000, guid: 17f3086eef4d1694aaf7ef2d70bc885f, type: 2}
   - {fileID: 11400000, guid: f25155195d502964cb332e37f1201fda, type: 2}
-  - {fileID: 11400000, guid: b5136f40fb9a4b24da60d388a93ec5b6, type: 2}
-  - {fileID: 11400000, guid: 7df4c7ff53bf0fe4abbba32ec6cd1b2e, type: 2}
+  - {fileID: 11400000, guid: f25155195d502964cb332e37f1201fda, type: 2}
   panel: {fileID: 446929955}
   player: {fileID: 1360277719}
   buttons:
