@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Time")]
     public float gameDuration = 600f; // 10 นาที
-    private float timer;
+    [HideInInspector]
+    public float timer;
 
     [Header("Boss")]
     public float bossInterval = 180f;
-    private float bossTimer;
+    [HideInInspector]
+    public float bossTimer;
 
     public GameObject bossPrefab;
     public Transform player;
@@ -102,6 +104,18 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SaveManager.Instance.DeleteSave(); // ลบเซฟเก่าทิ้ง
+        SaveManager.Instance.SetShouldLoad(false); // บอกว่าไม่ต้องโหลด
+        SceneManager.LoadScene("MapTest");
     }
+
+    public void QuitToMenuEND()
+    {
+        Time.timeScale = 1f;
+        SaveManager.Instance.DeleteSave(); // ลบเซฟเก่าทิ้ง
+        SaveManager.Instance.SetShouldLoad(false); // บอกว่าไม่ต้องโหลด
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
 }

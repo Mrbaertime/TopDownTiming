@@ -127,6 +127,13 @@ public class SaveManager : MonoBehaviour
             data.ownedAbilities.Add(ab.abilityName);
         }
 
+        //เพิ่มการเซฟเวลา โดยดึงจาก GameManager
+        if (GameManager.Instance != null)
+        {
+            data.timer = GameManager.Instance.timer;
+            data.bossTimer = GameManager.Instance.bossTimer;
+        }
+
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Game Saved!");
@@ -156,7 +163,13 @@ public class SaveManager : MonoBehaviour
         playerHealth.SetCurrentHealth(data.currentHP);
         abilityManager.LoadAbilities(data.ownedAbilities);
 
-        Debug.Log("โหลดข้อมูลสำเร็จ เลเวล: " + data.level);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.timer = data.timer;
+            GameManager.Instance.bossTimer = data.bossTimer;
+        }
+
+        Debug.Log("โหลดข้อมูลสำเร็จ เลเวล: " + data.level + " เวลาเหลือ: " + data.timer);
     }
 
     public bool HasSaveFile()
