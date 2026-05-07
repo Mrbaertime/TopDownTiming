@@ -13,7 +13,7 @@ public class OrbitSword : PlayerAbility
 
             OrbitSwordRuntime orbit = sword.GetComponent<OrbitSwordRuntime>();
 
-            orbit.center = player.transform; // 🔥 ตัวนี้แหละสำคัญ
+            orbit.center = player.transform; 
             orbit.index = i;
             orbit.total = swordCount;
         }

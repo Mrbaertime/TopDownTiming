@@ -179,4 +179,39 @@ public class AbilityManager : MonoBehaviour
         panel.SetActive(false);
         Time.timeScale = 1f;
     }
+
+
+    // =========================
+    //Save System
+    // =========================
+    public List<AbilityData> GetOwnedAbilities()
+    {
+        return ownedAbilities;
+    }
+
+    public void LoadAbilities(List<string> abilityNames)
+    {
+        foreach (string abName in abilityNames)
+        {
+            AbilityData found = allAbilities.Find(a => a.abilityName == abName);
+
+            if (found != null)
+            {
+                if (!ownedAbilities.Contains(found))
+                {
+                    ownedAbilities.Add(found);
+
+                    GameObject obj = Instantiate(found.abilityPrefab, player.transform);
+
+                    PlayerAbility ab = obj.GetComponent<PlayerAbility>();
+
+                    if (ab != null)
+                    {
+                        ab.Activate(player);
+                    }
+                }
+            }
+        }
+    }
 }
+

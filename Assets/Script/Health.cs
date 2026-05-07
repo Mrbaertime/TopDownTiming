@@ -83,4 +83,15 @@ public class Health : MonoBehaviour
     {
         OnDeath?.Invoke();
     }
+
+    //save system
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetCurrentHealth(int hp)
+    {
+        currentHealth = hp;
+    }
 }

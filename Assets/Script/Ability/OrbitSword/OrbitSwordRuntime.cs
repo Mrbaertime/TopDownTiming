@@ -14,10 +14,8 @@ public class OrbitSwordRuntime : MonoBehaviour
 
     void Start()
     {
-        // 🔥 กัน total = 0
         if (total <= 0) total = 1;
 
-        // 🔥 กัน center null
         if (center == null)
         {
             Debug.LogError("Center is NULL!", this);
@@ -34,7 +32,6 @@ public class OrbitSwordRuntime : MonoBehaviour
 
         angle += speed * Time.deltaTime;
 
-        // 🔥 กัน angle overflow (optional แต่ดี)
         if (angle > 360f) angle -= 360f;
 
         float rad = angle * Mathf.Deg2Rad;
@@ -47,7 +44,6 @@ public class OrbitSwordRuntime : MonoBehaviour
 
         transform.position = center.position + offset;
 
-        // 🔥 ใช้ safe rotation
         transform.up = offset.normalized;
     }
 }
