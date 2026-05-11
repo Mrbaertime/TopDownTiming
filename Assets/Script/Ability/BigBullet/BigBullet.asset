@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BigBullet
   m_EditorClassIdentifier: Assembly-CSharp::AbilityData
   abilityName: Big Bullet
-  description: Superrrr
-  icon: {fileID: 6753908117678964172, guid: 3c496f61a958e0f4eb9ba26416fce49f, type: 3}
+  description: Big Shottttt
+  icon: {fileID: -5643105228771564274, guid: 87f1328c8c63f3d48b3d7523b0814855, type: 3}
   abilityPrefab: {fileID: 2496862196375538448, guid: bc912949647e6d945ae7bec64e50a842, type: 3}
+  upgradeTo: {fileID: 0}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AbilityData
   abilityName: Double Shot
   description: Double Attack
-  icon: {fileID: 6165107194029988179, guid: 2f99dcfe4666eae4b9fc946b860eee13, type: 3}
+  icon: {fileID: -1966672948623692666, guid: 1be47484ff4bd3a41bace99d066517b9, type: 3}
   abilityPrefab: {fileID: 2128031949387295332, guid: ecb49609a19db3a4f8c8cbd80a76a123, type: 3}
   upgradeTo: {fileID: 11400000, guid: 6dd57610b011b5d4fb093b3b73bc1b19, type: 2}

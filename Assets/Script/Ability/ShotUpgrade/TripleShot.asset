@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AbilityData
   abilityName: TripleShot
   description: Upgrade from DoubleShot
-  icon: {fileID: -5643105228771564274, guid: 87f1328c8c63f3d48b3d7523b0814855, type: 3}
+  icon: {fileID: 343050385, guid: 77d875d3a6996aa4b9bc0f4342b32580, type: 3}
   abilityPrefab: {fileID: 5709846334380704407, guid: 3520d787ebe834e48b0a59be7ead24c3, type: 3}
   upgradeTo: {fileID: 0}
