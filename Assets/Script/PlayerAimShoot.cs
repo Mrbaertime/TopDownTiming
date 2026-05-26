@@ -14,6 +14,10 @@ public class PlayerAimShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float fireRate = 5f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSFX;
+
     private Vector2 aimInput;
     private float fireTimer;
 
@@ -84,6 +88,11 @@ public class PlayerAimShoot : MonoBehaviour
         if (fireTimer >= 1f / fireRate)
         {
             fireTimer = 0f;
+
+            if (shootSFX != null)
+            {
+                audioSource.PlayOneShot(shootSFX);
+            }
 
             if (isTripleShot)
             {

@@ -19,6 +19,10 @@ public class Health : MonoBehaviour
     private Rigidbody2D rb;
     private Color originalColor;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip hurtSFX;
+
     // 👈 ตัวแปรนี้สำคัญมาก! เอาไว้ให้ Player/Enemy เช็คว่ากำลังกระเด็นอยู่ไหม
     public bool IsKnockedBack { get; private set; } = false;
 
@@ -40,6 +44,12 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage, Vector3 hitSource = default)
     {
         currentHealth -= damage;
+
+        //SOunddddd
+        if (hurtSFX != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(hurtSFX);
+        }
 
         // 🎨 เปลี่ยนสี
         if (sr != null)
